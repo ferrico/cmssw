@@ -52,6 +52,16 @@ MuonTrackLoaderForGLB = cms.PSet(
         TTRHBuilder = cms.string('WithAngleAndTemplate')
     )
 )
+MuonTrackLoaderForGLBFLORIDA = cms.PSet(
+    TrackLoaderParameters = cms.PSet(
+        MuonUpdatorAtVertex,
+        Smoother = cms.string('KFSmootherForMuonTrackLoader'),
+        DoSmoothing = cms.bool(True),
+        VertexConstraint = cms.bool(True),
+        beamSpot = cms.InputTag("offlineBeamSpot"),
+        TTRHBuilder = cms.string('WithAngleAndTemplate')
+    )
+)
 MuonTrackLoaderForL2 = cms.PSet(
     TrackLoaderParameters = cms.PSet(
         MuonUpdatorAtVertex,
