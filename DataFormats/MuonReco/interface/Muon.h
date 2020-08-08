@@ -35,7 +35,8 @@ namespace reco {
     
     
     /// map for Global Muon refitters
-    enum MuonTrackType {None, InnerTrack, OuterTrack, CombinedTrack, TPFMS, Picky, DYT};
+    enum MuonTrackType {None, InnerTrack, OuterTrack, CombinedTrack, FLORIDA, TPFMS, Picky, DYT};
+//     enum MuonTrackType {None, InnerTrack, OuterTrack, CombinedTrack, TPFMS, Picky, DYT};
     typedef std::map<MuonTrackType, reco::TrackRef> MuonTrackRefMap;
     typedef std::pair<TrackRef, Muon::MuonTrackType> MuonTrackTypePair;
 
@@ -47,11 +48,16 @@ namespace reco {
     using reco::RecoCandidate::track;
     virtual TrackRef innerTrack() const { return innerTrack_; }
     TrackRef track() const override { return innerTrack(); }
+
     /// reference to Track reconstructed in the muon detector only
     virtual TrackRef outerTrack() const { return outerTrack_; }
     TrackRef standAloneMuon() const override { return outerTrack(); }
+
     /// reference to Track reconstructed in both tracked and muon detector
     virtual TrackRef globalTrack() const { return globalTrack_; }
+    /// reference to Track reconstructed in both tracked and muon detector FLORIDA
+    virtual TrackRef globalTrackFLORIDA() const { return globalTrack_; }
+//     virtual TrackRef globalTrackFLORIDA() const { return globalTrackFLORIDA_; }
     TrackRef combinedMuon() const override { return globalTrack(); }
 
     virtual TrackRef tpfmsTrack() const { return muonTrackFromMap(TPFMS);}
@@ -86,6 +92,7 @@ namespace reco {
     virtual void setStandAlone( const TrackRef & t );
     /// set reference to Track
     virtual void setGlobalTrack( const TrackRef & t );
+    virtual void setGlobalTrackFLORIDA( const TrackRef & t );
     virtual void setCombined( const TrackRef & t );
     // set reference to the Best Track
     virtual void setBestTrack(MuonTrackType muonType) {bestTrackType_ = muonType;}
@@ -291,6 +298,8 @@ namespace reco {
     TrackRef outerTrack_;
     /// reference to Track reconstructed in both tracked and muon detector
     TrackRef globalTrack_;
+    /// reference to Track reconstructed in both tracked and muon detector FLORIDA
+//     TrackRef globalTrackFLORIDA_;
     /// reference to the Global Track refitted with dedicated TeV reconstructors
     MuonTrackRefMap refittedTrackMap_;
     /// reference to the Track chosen to assign the momentum value to the muon 

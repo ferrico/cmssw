@@ -33,6 +33,7 @@ RecoMuonAOD = cms.PSet(
                                            'keep recoTrackExtras_standAloneMuons_*_*',
                                            'keep TrackingRecHitsOwned_standAloneMuons_*_*',
                                            'keep recoTracks_globalMuons_*_*',
+                                           'keep recoTracks_globalMuonsFLORIDA_*_*',
                                            'keep recoTrackExtras_globalMuons_*_*',
                                            'keep recoTracks_tevMuons_*_*',
                                            'keep recoTrackExtras_tevMuons_*_*',

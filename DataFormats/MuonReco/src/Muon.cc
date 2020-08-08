@@ -879,6 +879,8 @@ void Muon::setInnerTrack( const TrackRef & t ) { innerTrack_ = t; }
 void Muon::setTrack( const TrackRef & t ) { setInnerTrack(t); }
 void Muon::setStandAlone( const TrackRef & t ) { setOuterTrack(t); }
 void Muon::setGlobalTrack( const TrackRef & t ) { globalTrack_ = t; }
+// void Muon::setGlobalTrackFLORIDA( const TrackRef & t ) { globalTrackFLORIDA_ = t; }
+void Muon::setGlobalTrackFLORIDA( const TrackRef & t ) { globalTrack_ = t; }
 void Muon::setCombined( const TrackRef & t ) { setGlobalTrack(t); }
 
 
@@ -891,6 +893,7 @@ TrackRef Muon::muonTrack(const MuonTrackType& type) const{
   case InnerTrack:     return innerTrack();
   case OuterTrack:     return standAloneMuon(); 
   case CombinedTrack:  return globalTrack();
+  case FLORIDA:  	   return globalTrack();
   case TPFMS:          return tpfmsTrack();
   case Picky:          return pickyTrack();
   case DYT:            return dytTrack();

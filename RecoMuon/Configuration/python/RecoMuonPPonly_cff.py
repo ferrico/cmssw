@@ -26,6 +26,13 @@ displacedGlobalMuons = globalMuons.clone()
 displacedGlobalMuons.MuonCollectionLabel = cms.InputTag("displacedStandAloneMuons","")
 displacedGlobalMuons.TrackerCollectionLabel = cms.InputTag("displacedTracks")
 
+
+# FLORIDA
+from RecoMuon.GlobalMuonProducer.GlobalMuonProducerFLORIDA_cfi import *
+# globalMuonsFLORIDA = globalMuons.clone()
+# globalMuonsFLORIDA.TrackLoaderParameters.VertexConstraint = cms.bool(True) 
+
+
 # TeV refinement
 from RecoMuon.GlobalMuonProducer.tevMuons_cfi import *
 
@@ -55,7 +62,7 @@ fastSim.toReplaceWith(standalonemuontrackingTask,standalonemuontrackingTask.copy
 displacedGlobalMuonTrackingTask = cms.Task(iterDisplcedTrackingTask,displacedGlobalMuons)
 displacedGlobalMuonTracking = cms.Sequence(displacedGlobalMuonTrackingTask)
 
-globalmuontrackingTask = cms.Task(globalMuons,tevMuons,displacedGlobalMuonTrackingTask)
+globalmuontrackingTask = cms.Task(globalMuons,globalMuonsFLORIDA,tevMuons,displacedGlobalMuonTrackingTask)
 globalmuontracking = cms.Sequence(globalmuontrackingTask)
 # not commisoned and not relevant in FastSim (?):
 fastSim.toReplaceWith(globalmuontrackingTask,globalmuontrackingTask.copyAndExclude([displacedGlobalMuonTrackingTask]))

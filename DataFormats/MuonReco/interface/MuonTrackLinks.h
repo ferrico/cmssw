@@ -46,6 +46,9 @@ namespace reco {
 
     /// set the ref to combined track
     inline void setGlobalTrack(reco::TrackRef glb) {theGlbTrack = glb;}
+
+    /// set the ref to combined track
+//     inline void setGlobalTrackFLORIDA(reco::TrackRef glb) {theGlbTrack = glb;}
   
   protected:
 
