@@ -71,7 +71,8 @@ GlobalMuonProducerFLORIDA::GlobalMuonProducerFLORIDA(const ParameterSet& paramet
   produces<vector<Trajectory> >().setBranchAlias(theAlias + "Trajectories") ;
   produces<TrajTrackAssociationCollection>().setBranchAlias(theAlias + "TrajTrackMap");
   produces<reco::MuonTrackLinksCollection>().setBranchAlias(theAlias + "s");
-//   produces<reco::TrackCollection>("UpdatedAtVtx").setBranchAlias(theAlias + "UpdatedAtVtxTracks");
+  produces<reco::TrackCollection>("UpdatedAtVtx").setBranchAlias(theAlias + "UpdatedAtVtxTracks");
+  produces<reco::TrackToTrackMap>().setBranchAlias(theAlias + "TrackToTrackMap");
 }
 
 
